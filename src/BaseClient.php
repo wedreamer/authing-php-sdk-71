@@ -361,8 +361,9 @@ PUBLICKKEY;
      */
     private function send($url, $data = '', $method = 'POST', $time = 30000)
     {
+        $token = $this->getToken();
         // 如果是通过密钥刷新
-        $this->accessToken = isset($this->getToken()) ? $this->getToken() : $this->accessToken;
+        $this->accessToken = isset($token) ? $token : $this->accessToken;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
